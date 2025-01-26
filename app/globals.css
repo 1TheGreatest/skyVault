@@ -148,9 +148,9 @@
     @apply border-none shadow-none p-0 shad-no-focus placeholder:text-light-200 body-2 !important;
   }
 
-  .shad-form-item {
+  /* .shad-form-item {
     @apply flex h-[78px] flex-col justify-center rounded-xl border border-light-300 px-4 shadow-drop-1;
-  }
+  } */
   .shad-form-label {
     @apply text-light-100 pt-2 body-2 w-full !important;
   }
@@ -297,6 +297,7 @@
 
   /* AuthForm */
   .auth-form {
+    @apply flex max-h-[800px] w-full max-w-[580px] flex-col justify-center space-y-6 transition-all lg:h-full lg:space-y-8 !important;
     @apply flex max-h-[800px] w-full max-w-[580px] flex-col justify-center space-y-6 transition-all lg:h-full lg:space-y-8 !important;
   }
   .form-title {
@@ -461,20 +462,6 @@
   }
 } */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
