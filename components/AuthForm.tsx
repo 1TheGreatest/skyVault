@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,25 +16,53 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-
-const formSchema = z.object({
-  username: z.string().min(2).max(50),
-});
+import Link from "next/link";
+import { createAccount } from "@/lib/actions/user.actions";
 
 type FormType = "sign-in" | "sign-up";
 
+const authFormSchema = (formtype: FormType) => {
+  return z.object({
+    fullname:
+      formtype === "sign-up"
+        ? z.string().min(2).max(50)
+        : z.string().optional(),
+    email: z.string().email(),
+  });
+};
+
 const AuthForm = ({ type }: { type: FormType }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [accountId, setAccountId] = useState(null);
+
   // 1. Define your form.
+  const formSchema = authFormSchema(type);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      fullname: "",
+      email: "",
     },
   });
 
   // 2. Define a submit handler.
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsLoading(true);
+    setErrorMessage("");
+
+    try {
+      const user = await createAccount({
+        fullName: values.fullname || "",
+        email: values.email,
+      });
+      setAccountId(user.accountId);
+    } catch {
+      setErrorMessage("Failed to create account. Please try again. ");
+    } finally {
+      setIsLoading(false);
+    }
+
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
@@ -51,7 +78,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           {type === "sign-up" && (
             <FormField
               control={form.control}
-              name="fullName"
+              name="fullname"
               render={({ field }) => (
                 <FormItem>
                   <div className="shad-form-item">
@@ -88,9 +115,12 @@ const AuthForm = ({ type }: { type: FormType }) => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="form-submit-button">
+          <Button
+            type="submit"
+            className="form-submit-button"
+            disabled={isLoading}
+          >
             {type === "sign-in" ? "Sign In" : "Sign Up"}
-
             {isLoading && (
               <Image
                 src="icons/loader.svg"
@@ -101,6 +131,21 @@ const AuthForm = ({ type }: { type: FormType }) => {
               />
             )}
           </Button>
+
+          {errorMessage && <p className="error-message">*{errorMessage}</p>}
+          <div className="body-2 flex justify-center">
+            <p className="text-light-100">
+              {type === "sign-in"
+                ? "Don't have an account?"
+                : "Already have an account?"}
+            </p>
+            <Link
+              href={type === "sign-in" ? "/sign-up" : "/sign-in"}
+              className="ml-1 font-medium text-brand"
+            >
+              {type === "sign-in" ? "Sign In" : "Sign Up"}
+            </Link>
+          </div>
         </form>
       </Form>
       OTP
