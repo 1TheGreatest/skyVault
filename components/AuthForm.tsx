@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import Link from "next/link";
 import { createAccount } from "@/lib/actions/user.actions";
+import OtpModal from "./OTPModal";
 
 type FormType = "sign-in" | "sign-up";
 
@@ -56,16 +57,12 @@ const AuthForm = ({ type }: { type: FormType }) => {
         fullName: values.fullname || "",
         email: values.email,
       });
-      setAccountId(user.accountId);
+      setAccountId(user.accountId); // set accountID to pop OTP modal
     } catch {
       setErrorMessage("Failed to create account. Please try again. ");
     } finally {
       setIsLoading(false);
     }
-
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
   };
 
   return (
@@ -148,7 +145,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
           </div>
         </form>
       </Form>
-      OTP
+      {/* OTP Verification */}
+      {true && (
+        <OtpModal email={form.getValues("email")} accountId={accountId} />
+      )}
     </>
   );
 };
