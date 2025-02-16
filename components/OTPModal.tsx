@@ -1,23 +1,23 @@
+"use client";
 import React, { useState } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { sendEmailOTP, verifySecret } from "@/lib/actions/user.actions";
+import { useRouter } from "next/navigation";
 
 const OtpModal = ({
   accountId,
@@ -26,40 +26,31 @@ const OtpModal = ({
   accountId: string;
   email: string;
 }) => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setisLoading(true);
+    setIsLoading(true);
     try {
       // Call API to verify OTP
-      const response = await fetch("/api/verify-otp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          password,
-          email: form.getValues("email"),
-        }),
-      });
-      if (response.ok) {
-        console.log("OTP verified successfully");
-        setisOpen(false);
-      } else {
-        console.error("Failed to verify OTP");
+      const sessionId = await verifySecret({ accountId, password });
+
+      if (sessionId) {
+        router.push("/");
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
     } finally {
-      setisLoading(false);
+      setIsLoading(false);
     }
   };
 
   const handleResendOtp = async () => {
     // Logic to resend OTP
+    await sendEmailOTP({ email });
   };
 
   return (
@@ -114,7 +105,7 @@ const OtpModal = ({
               Didn&apos;t get a code?
               <Button
                 type="button"
-                onClick={handleResendOtp()}
+                onClick={handleResendOtp}
                 className="pl-1 text-brand"
                 variant="link"
               >
