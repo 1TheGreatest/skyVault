@@ -9,13 +9,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="flex max-h-[800px] max-w-[430px] flex-col justify-center space-y-12">
           <div className="flex items-center">
             <Image
-              src="/images/skVault.svg"
+              src="/icons/logo-full.svg"
               alt="logo"
               width={224}
               height={82}
               className="h-auto"
             />
-            <h1 className="h1 text-white">SkyVault</h1>
           </div>
 
           <div className="space-y-5 text-white">
