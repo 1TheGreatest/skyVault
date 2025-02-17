@@ -2,15 +2,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -20,6 +14,7 @@ import { navItems } from "@/constants";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import FileUploader from "./FileUploader";
+import { signOutUser } from "@/lib/actions/user.actions";
 
 interface Props {
   ownerId: string;
@@ -105,7 +100,7 @@ const MobileNavigation = ({
             <Button
               className="mobile-sign-out-button"
               type="submit"
-              onClick={() => {}}
+              onClick={async () => await signOutUser()}
             >
               <Image
                 src="/icons/logout.svg"
