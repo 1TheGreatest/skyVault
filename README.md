@@ -13,16 +13,16 @@ SkyVault is a **storage management and file-sharing platform** that lets users e
 
 ## 🔋 Features
 
-✅ **User Authentication with Appwrite** – Sign up, log in, and log out securely.
-✅ **File Uploads** – Supports multiple file types: documents, images, videos, and audio.
-✅ **View & Manage Files** – Browse, preview, rename, and delete uploaded files.
-✅ **Download Files** – Instantly download essential documents.
-✅ **File Sharing** – Share uploaded files with others for easy collaboration.
-✅ **Dashboard** – Overview of total/consumed storage, recent uploads, and file categorization.
-✅ **Global Search** – Quickly find files and shared content.
-✅ **Sorting Options** – Sort files by date, name, or size for efficient organization.
-✅ **Modern Responsive Design** – Sleek, user-friendly interface optimized for all devices.
-✅ **Advanced Features** – Harness the power of Next.js 15, React 19, and Appwrite for enhanced performance.
+- ✅ **User Authentication with Appwrite** – Sign up, log in, and log out securely.
+- ✅ **File Uploads** – Supports multiple file types: documents, images, videos, and audio.
+- ✅ **View & Manage Files** – Browse, preview, rename, and delete uploaded files.
+- ✅ **Download Files** – Instantly download essential documents.
+- ✅ **File Sharing** – Share uploaded files with others for easy collaboration.
+- ✅ **Dashboard** – Overview of total/consumed storage, recent uploads, and file categorization.
+- ✅ **Global Search** – Quickly find files and shared content.
+- ✅ **Sorting Options** – Sort files by date, name, or size for efficient organization.
+- ✅ **Modern Responsive Design** – Sleek, user-friendly interface optimized for all devices.
+- ✅ **Advanced Features** – Harness the power of Next.js 15, React 19, and Appwrite for enhanced performance.
 
 ## 🤸 Quick Start
 
