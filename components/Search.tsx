@@ -21,13 +21,13 @@ const Search = () => {
 
   useEffect(() => {
     const fetchFiles = async () => {
-      if (debouncedQuery===0) {
+      if (debouncedQuery.length === 0) {
         setResults([]);
         setOpen(false);
         return router.push(path.replace(searchParams.toString(), "")); // go back to the original page with no search query
       }
 
-      const files = await getFiles({ searchText: query });
+      const files = await getFiles({ types: [], searchText: debouncedQuery });
 
       setResults(files.documents);
       setOpen(true);
@@ -63,7 +63,7 @@ const Search = () => {
           value={query}
           placeholder="Search ..."
           className="search-input"
-          onChange={(e) =>{ 
+          onChange={(e) => {
             setQuery(e.target.value);
           }}
         />
