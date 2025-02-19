@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SkyVault
 
-## Getting Started
+SkyVault is a **storage management and file-sharing platform** that lets users effortlessly upload, organize, and share files. Built with **Next.js 15** and the **Appwrite Node SDK**, it utilizes advanced features for seamless file management.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- ⚛ **React 19** – Latest version for enhanced UI performance.
+- 🌐 **Next.js 15** – Cutting-edge SSR and API capabilities.
+- 📂 **Appwrite** – Secure backend services for authentication and storage.
+- 🎨 **TailwindCSS** – Utility-first styling for modern UI.
+- 🏗 **ShadCN** – Elegant UI components.
+- 🔷 **TypeScript** – Strongly typed language for robustness.
+
+## 🔋 Features
+
+✅ **User Authentication with Appwrite** – Sign up, log in, and log out securely.
+✅ **File Uploads** – Supports multiple file types: documents, images, videos, and audio.
+✅ **View & Manage Files** – Browse, preview, rename, and delete uploaded files.
+✅ **Download Files** – Instantly download essential documents.
+✅ **File Sharing** – Share uploaded files with others for easy collaboration.
+✅ **Dashboard** – Overview of total/consumed storage, recent uploads, and file categorization.
+✅ **Global Search** – Quickly find files and shared content.
+✅ **Sorting Options** – Sort files by date, name, or size for efficient organization.
+✅ **Modern Responsive Design** – Sleek, user-friendly interface optimized for all devices.
+✅ **Advanced Features** – Harness the power of Next.js 15, React 19, and Appwrite for enhanced performance.
+
+## 🤸 Quick Start
+
+Follow these steps to set up the project locally.
+
+### 📌 Prerequisites
+
+Ensure the following are installed:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- [npm](https://www.npmjs.com/) (or [yarn](https://yarnpkg.com/)/[pnpm](https://pnpm.io/))
+
+### 🚀 Clone the Repository
+
+```sh
+git clone https://github.com/1TheGreatest/skyVault.git
+cd skyVault
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📦 Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🛠 Set Up Environment Variables
 
-## Learn More
+Create a `.env.local` file in the root directory and add:
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+NEXT_PUBLIC_APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1"
+NEXT_PUBLIC_APPWRITE_PROJECT=""
+NEXT_PUBLIC_APPWRITE_DATABASE=""
+NEXT_PUBLIC_APPWRITE_USERS_COLLECTION=""
+NEXT_PUBLIC_APPWRITE_FILES_COLLECTION=""
+NEXT_PUBLIC_APPWRITE_BUCKET=""
+NEXT_APPWRITE_KEY=""
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Replace placeholders with your actual Appwrite credentials. You can obtain these by signing up and creating a project on the [Appwrite website](https://appwrite.io/).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### ▶ Running the Project
 
-## Deploy on Vercel
+```sh
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Visit [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌍 Live Demo
+
+Check out the live version: [SkyVault](https://sky-vault-six.vercel.app)
+
+## Contact
+
+Feel free to reach out to me via [email](mailto:sampomahdev@gmail.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/solomon-ampomah-a67128141/).
